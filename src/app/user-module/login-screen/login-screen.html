@@ -10,9 +10,12 @@
              <img class="logo" src="imgs/Chat.png" alt="logo">
             <h1 class="titulo">Login</h1>
             <input class="inpute" type="text"  placeholder="Insira o e-mail" formControlName="email"> 
+            <span class="error-mesage">{{emailErrorMessage}}</span>
             <input class="inpute" type="password"  placeholder="Insira a senha" formControlName="password">
+            <span class="error-mesage">{{passwordErrorMessage}}</span>
             <button class="butone" (click)="onLoginClick()">Entrar</button>
-            
+            <span class="aprove-mesage">{{sucessLogin}}</span>
+            <span class="error-mesage">{{errorLogin}}</span>
         </div>   
         
         </main>  

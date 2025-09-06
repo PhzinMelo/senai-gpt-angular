@@ -57,6 +57,16 @@
  border-radius: 10px;
  margin-bottom: 16px;
 }
+.error-mesage{  
+    color: red;
+    font-size: 12px;    
+    transform: translateY(-12px);
+}
+.aprove-mesage{ 
+  color: green;
+    font-size: 12px;    
+    transform: translateY(-12px);  
+}
 .butone{    
  padding: 20px; /*margem interna*/
  background-color:#F7F9FB;

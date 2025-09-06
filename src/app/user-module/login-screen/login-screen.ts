@@ -9,6 +9,11 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 })
 export class LoginScreen {
   loginForm: FormGroup;
+  emailErrorMessage: string;
+  passwordErrorMessage: string
+  sucessLogin: string
+  errorLogin: string
+  
   constructor(private fb:FormBuilder) {  
     //inicia o formulario
     //Cria o campo obrigatorio de email.
@@ -16,20 +21,27 @@ export class LoginScreen {
     this.loginForm=this.fb.group({
       email: ["",[Validators.required]],
       password: ["",[Validators.required]]
-    })
+    });
+    this.emailErrorMessage= ""
+    this.passwordErrorMessage= ""
+    this.sucessLogin= ""
+    this.errorLogin=""
+  
   }
   async onLoginClick(){ 
-    alert("Botão de login clicado")
+    //alert("Botão de login clicado")
     console.log("Email",this.loginForm.value.email)
     console.log("Password",this.loginForm.value.password)
     
     if(this.loginForm.value.email ==""){  
-      alert("Preencha o email")
-    return; }
+      // alert("Preencha o email")
+      this.emailErrorMessage="O campo de e-mail é obrigatorio"
+      return; }
 
     if (this.loginForm.value.password =="") {
-      alert("Preencha a senha")
-    return;
+      //alert("Preencha a senha")
+      this.passwordErrorMessage="O campo de senha é obrigatorio"
+      return;
     }
     
     let response =await fetch("https://senai-gpt-api.azurewebsites.net/login", {  
@@ -47,10 +59,12 @@ export class LoginScreen {
     console.log("Status code" + response.status);
 
     if (response.status>=200 && response.status<=299) {  
-      alert("Deu bom paizao")
+      this.sucessLogin="Login feito com sucesso"
+      this.errorLogin=""
     }
     else  {  
-      alert("Deu ruim paizao")
+      this.errorLogin="Email ou senha incorretos"
+      this.sucessLogin=""
     }
     
     let email2 =this.loginForm.value.email ;
