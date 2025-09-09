@@ -14,7 +14,7 @@ export class LoginScreen {
   sucessLogin: string
   errorLogin: string
   
-  constructor(private fb:FormBuilder) {  
+  constructor(private fb:FormBuilder, ) {  
     //inicia o formulario
     //Cria o campo obrigatorio de email.
     //Cria o campo obrigatorio da senha.
@@ -29,6 +29,10 @@ export class LoginScreen {
   
   }
   async onLoginClick(){ 
+    this.emailErrorMessage= "";
+    this.passwordErrorMessage="";
+    this.sucessLogin="";
+    this.errorLogin="";
     //alert("Botão de login clicado")
     console.log("Email",this.loginForm.value.email)
     console.log("Password",this.loginForm.value.password)
@@ -61,6 +65,13 @@ export class LoginScreen {
     if (response.status>=200 && response.status<=299) {  
       this.sucessLogin="Login feito com sucesso"
       this.errorLogin=""
+      let json= await response.json();
+      console.log("JSON",json)
+      let meuToken= json.accessToken
+      let userId= json.user.id;
+      localStorage.setItem("meuToken", meuToken)
+      localStorage.setItem("meuId", userId)
+      window.location.href="chat"
     }
     else  {  
       this.errorLogin="Email ou senha incorretos"
@@ -73,7 +84,6 @@ export class LoginScreen {
       alert('Campo de email obrigatorio') }
     else if(password2.lenght ===0){
       alert(`Campo de senha obrigatorio`)}
+      }
       
-    
-  }
 }

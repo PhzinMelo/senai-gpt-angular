@@ -1,9 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
-*{  
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family:"Inter", sans-serif;
+* { 
+  box-sizing: border-box; 
 }
 .container{
  display: flex;
@@ -15,18 +11,38 @@
  background-color: rgb(255, 255, 255);
  justify-content: space-between;
  flex-direction: column;
-padding-left: 20px;
-padding-right: 20px;
-
+padding: 20px 0;
 }
-.botao{ 
-    width: 100%;
+.menu button {
+  width: 100%;
+  text-align: left;
+  padding-left: 20px; /* mesmo valor para todos */
+  border: none;
+ 
+  margin: 0 0 10px 0; /* margin-bottom padrão pra espaçar sempre igual */
+  box-sizing: border-box;
+}
+.botao {
+    background-color: black;        /* Fundo preto */
+    color: white;                   /* Texto branco */
+             /* Espaçamento interno */
+    border: none;                   /* Sem borda */
+    border-radius: 6px;             /* Cantos arredondados */
+    width: 100%;                    /* Ocupa a largura disponível */
+    font-size: 16px;                /* Tamanho da fonte */
+    font-weight: bold;             /* Texto em negrito */
+    cursor: pointer;                /* Muda cursor ao passar o mouse */
+    text-align: center;             /* Centraliza o texto */
+    display: flex;                  /* Flex para centralizar com precisão */
+    justify-content: center;       /* Centraliza horizontalmente */
+    align-items: center;           /* Centraliza verticalmente */
+    transition: background-color 0.3s ease;
     height: 20%;
-    background-color:black;
-    color: white;
-    font-size: large;
-    border: none;
-    
+    margin-left: 20px;
+}
+
+.botao:hover {
+    background-color: #222;         /* Cor mais clara ao passar o mouse */
 }
 .botao2{    
     width: 100%;
@@ -34,7 +50,7 @@ padding-right: 20px;
     text-align: left;
     justify-content: center;
     margin-top: 10px;
-   padding-left: 10px;
+   
    background-color: #FFFFFF;
    border: none;
 }
@@ -55,7 +71,7 @@ padding-bottom: 24px;
     margin-top: 30px;
     width: 40%;
     height: 20%;
-    background-image: url(imgs/Chat.svg);
+    background-image: url("/imgs/Chat.svg");
     background-size: contain;
     background-repeat: no-repeat;
     margin-top: 10vh;
@@ -221,6 +237,6 @@ padding-bottom: 24px;
 
 .titulo-meio2 i{  
   font-size: 32px;
-  margin-top: 9px;
+  margin-top: 7px;
   
 }
