@@ -11,23 +11,15 @@
  background-color: rgb(255, 255, 255);
  justify-content: space-between;
  flex-direction: column;
-padding: 20px 0;
+
 }
-.menu button {
-  width: 100%;
-  text-align: left;
-  padding-left: 20px; /* mesmo valor para todos */
-  border: none;
- 
-  margin: 0 0 10px 0; /* margin-bottom padrão pra espaçar sempre igual */
-  box-sizing: border-box;
-}
+
 .botao {
     background-color: black;        /* Fundo preto */
     color: white;                   /* Texto branco */
-             /* Espaçamento interno */
+      padding-left: 20px;         /* Espaçamento interno */
     border: none;                   /* Sem borda */
-    border-radius: 6px;             /* Cantos arredondados */
+    border-radius: 2px;             /* Cantos arredondados */
     width: 100%;                    /* Ocupa a largura disponível */
     font-size: 16px;                /* Tamanho da fonte */
     font-weight: bold;             /* Texto em negrito */
@@ -38,7 +30,7 @@ padding: 20px 0;
     align-items: center;           /* Centraliza verticalmente */
     transition: background-color 0.3s ease;
     height: 20%;
-    margin-left: 20px;
+    
 }
 
 .botao:hover {
@@ -50,7 +42,7 @@ padding: 20px 0;
     text-align: left;
     justify-content: center;
     margin-top: 10px;
-   
+     padding-left: 20px;
    background-color: #FFFFFF;
    border: none;
 }
@@ -100,11 +92,11 @@ padding-bottom: 24px;
     background-color: rgb(255, 255, 255);
     border: none;
     margin-top: 10px;
-    
+      
     align-items: flex-start;
 }
 .bottom-debaixo{ 
-    
+      padding-left: 20px;
     width: 100%;
     height: 40px;
     text-align: left;
@@ -118,6 +110,7 @@ padding-bottom: 24px;
     background-color: #FFFFFF;
     text-align: left;
    border: none;
+    padding-left: 20px;
 }
 
 .box1{  
@@ -239,4 +232,28 @@ padding-bottom: 24px;
   font-size: 32px;
   margin-top: 7px;
   
+}
+/* Botão "+New Chat" estilizado */
+.new-chat-btn {
+    display: flex;                  /* Flexbox para centralizar texto */
+    justify-content: center;        /* Centraliza horizontal */
+    align-items: center;            /* Centraliza vertical */
+    padding: 10px 20px;             /* Ajusta tamanho sem ocupar 100% */
+    margin-bottom: 10px;            /* Mesma margem dos outros botões */
+    background-color: black;        /* Fundo preto */
+    color: white;                   /* Texto branco */
+    border: none;                   /* Sem borda */
+    border-radius: 10px;            /* Bordas arredondadas */
+    font-size: 16px;                /* Tamanho da fonte */
+    font-weight: bold;              /* Negrito */
+    cursor: pointer;                /* Cursor mão */
+    transition: background-color 0.3s ease;
+    width: 85%;
+    height: 20%;                    /* Ajusta à largura do conteúdo */
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.new-chat-btn:hover {
+    background-color: #222;         /* Cor ao passar mouse */
 }
