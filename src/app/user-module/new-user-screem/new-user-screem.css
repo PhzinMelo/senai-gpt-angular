@@ -1,0 +1,68 @@
+.titulo {
+
+  font-size: 76px; /* Ajuste o tamanho conforme necessário */
+  font-family: "inter";
+  text-align: center; /* Alinha o título no centro */
+  margin-top: 0;
+  margin-bottom: 16px; /* Dá um espaçamento abaixo do título */
+  width: 400px;
+  
+}
+
+.robo-image{    
+
+    background-image: url("/imgs/Rectangle 1.png");
+    background-size: cover;
+    background-position:0px -100px ;
+    width: 50vw;
+    height: 100vh;
+}
+
+.page-container{    
+
+    display:flex;
+
+
+}
+.login-container{   
+      background-color: rgb(255, 255, 255);
+      width:50vw;
+      height:100vh ;
+
+      /* Kit centralizaçãoverflow */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+.logo{   
+    height: 60px; 
+    margin-bottom: 8px; 
+
+}
+
+.inpute{ 
+ padding: 20px; /*margem interna*/
+ background-color:#F7F9FB;
+ width: 377px;
+ border: 1px solid #ccc;
+ border-radius: 10px;
+ margin-bottom: 16px;
+}
+.butone{    
+ padding: 20px; /*margem interna*/
+ background-color:#F7F9FB;
+ width: 377px;
+ border: 1px solid #ccc;
+ border-radius: 10px;
+ margin-bottom: 16px;
+background-color: #1c1c1c;
+color: #ccc;
+cursor: pointer;
+}
+.button3{   
+    color: blue;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+}
