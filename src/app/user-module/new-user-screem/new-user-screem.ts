@@ -18,10 +18,15 @@ export class NewUserScreen {
 
   constructor(private fb: FormBuilder) {
     this.loginForm = this.fb.group({
-      nome: ["", [Validators.required]],
-      email: ["", [Validators.required]],
-      password: ["", [Validators.required]],
-      password2: ["", [Validators.required]]
+      nome: ["", [Validators.required,]],
+      email: ["", [Validators.required,
+      Validators.pattern(/^[^\s@]+@[^\s@]+\.[^\s@]+$/),
+      Validators.minLength(6)
+      ]],
+      password: ["", [Validators.required, Validators.minLength(6),
+      Validators.pattern(/^(?=.*[A-Z]).+$/)
+      ]],
+      password2: ["", [Validators.required, Validators.minLength(6),]]
     });
 
     this.nomeErrorMessage = "";
@@ -51,16 +56,33 @@ export class NewUserScreen {
       return;
     }
 
+    //verificação de email
     if (email === "") {
       this.emailErrorMessage = "O campo de e-mail é obrigatório";
       return;
     }
+    if (email.length < 9) {
+      this.emailErrorMessage = "O e-mail deve ter pelo menos 9 caracteres";
+      return;
+    }
+    if (!email.includes("@") || !email.includes(".")) {
+      this.emailErrorMessage = "O e-mail deve conter '@' e '.'";
+      return;
+    }
 
+    //verificação de senha
     if (password === "") {
       this.passwordErrorMessage = "O campo de senha é obrigatório";
       return;
     }
-
+    if (password.length < 6) {
+      this.passwordErrorMessage = "A senha deve ter pelo menos 6 caracteres";
+      return;
+    }
+    if (!/[A-Z]/.test(password)) {
+      this.passwordErrorMessage = "A senha deve conter pelo menos uma letra maiúscula";
+      return;
+    }
     if (password2 === "") {
       this.passwordErrorMessage = "Confirme a senha";
       return;
