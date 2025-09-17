@@ -2,9 +2,9 @@ import { ApplicationConfig, inject, provideBrowserGlobalErrorListeners, provideZ
 import { provideRouter, Router } from '@angular/router';
 
 import { routes } from './app.routes';
-import { HttpErrorResponse, provideHttpClient, withInterceptors } from '@angular/common/http';
+import { HttpErrorResponse, HttpInterceptorFn, provideHttpClient, withInterceptors } from '@angular/common/http';
 import { catchError, throwError } from 'rxjs';
-export const authInterceptor=(req,next)=> { 
+export const authInterceptor: HttpInterceptorFn=(req,next)=> { 
 
   const router= inject(Router);
   return next(req).pipe(  
@@ -20,7 +20,7 @@ export const authInterceptor=(req,next)=> {
 export const appConfig: ApplicationConfig = {
   providers: [
     provideHttpClient(
-      withInterceptors([])
+      withInterceptors([authInterceptor])
     ),
     provideBrowserGlobalErrorListeners(),
     provideZoneChangeDetection({ eventCoalescing: true }),
