@@ -1,38 +1,65 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { firstValueFrom } from 'rxjs';
 
+interface IChat {
+  chatTitle: string;
+  id: number;
+  userId: string;
+}
 
-  interface IChat { 
-    chatTitle:string
-    id:number
-    userId:string
-  }
+interface IMessage {   
+  chatId: number;
+  id: number;
+  text: string;
+  userId: string;
+}
+
 @Component({
   selector: 'app-chat-screen',
-  imports: [HttpClientModule,CommonModule],
+  imports: [CommonModule],
   templateUrl: './chat-screen.html',
   styleUrl: './chat-screen.css'
 })
 export class ChatScreen {
   chats: IChat[];
-  constructor(private http: HttpClient){    //constroi a classe
-    this.chats=[]
+  chatSelecionado: IChat;
+  mensagens: IMessage[]; 
+
+  constructor(private http: HttpClient) {
+    this.chats = [];
+    this.chatSelecionado = null!;
+    this.mensagens = []; 
   }
-  ngOnInit()  {  //executando quando o angular esta pronto para rodar???
-    this.getChats()
+
+  ngOnInit() {
+    this.getChats();
   }
-  async  getChats(){ 
-    let response= await this.http.get("https://senai-gpt-api.azurewebsites.net/chats",{
-    headers: { 
-      "Authorization" : "Bearer " + localStorage.getItem("meuToken")  
+
+  async getChats() {
+    let response = await firstValueFrom(this.http.get("https://senai-gpt-api.azurewebsites.net/chats", {
+      headers: {
+        "Authorization": "Bearer " + localStorage.getItem("meuToken")
+      }
+    }));
+    if (response) {
+      this.chats = response as [];
     }
-  }).toPromise();
-  if (response) { 
-    this.chats=response as []
+    else {
+      console.log("Erro ao bsucar os chats");
+    }
   }
-  else {  
-    console.log("Erro ao bsucar os chats")
+
+  async onChatClick(chatClicado: IChat) {
+    console.log("Chat clicado", chatClicado);
+    this.chatSelecionado = chatClicado;
+    let response = await firstValueFrom(this.http.get("https://senai-gpt-api.azurewebsites.net/messages?chatId=" + chatClicado.id, {
+      headers: {
+        "Authorization": "Bearer " + localStorage.getItem("meuToken")
+      }
+    }));
+    console.log("MENSAGENS", response);
+    this.mensagens = response as IMessage[]; // Cast adicionado para garantir o tipo correto
   }
-}
 }

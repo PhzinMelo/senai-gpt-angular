@@ -4,13 +4,14 @@
 
             <button class="new-chat-btn">+New Chat</button>
 
-            <button class="botao2">
-                <i class="fa-solid fa-message"></i>
-                Ai Chat
-            </button>
+            @for (chat of chats; track $index){
+                <button class="botao2" (click)="onChatClick(chat)" cursor:pointer>
+                    <i class="fa-solid fa-message"></i>
+                    {{ chat.chatTitle }}
+                </button>
+            }
 
-            <button *ngFor="let chat of chats" class="botao2"> <i class="fa-solid fa-message"></i>
-                {{ chat.chatTitle }}</button>
+            
 
         </div>
 
