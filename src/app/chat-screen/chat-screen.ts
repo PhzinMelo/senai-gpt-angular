@@ -2,6 +2,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { firstValueFrom } from 'rxjs';
+import { ChangeDetectorRef } from '@angular/core';
 
 interface IChat {
   chatTitle: string;
@@ -27,7 +28,7 @@ export class ChatScreen {
   chatSelecionado: IChat;
   mensagens: IMessage[]; 
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient , private cd: ChangeDetectorRef) {
     this.chats = [];
     this.chatSelecionado = null!;
     this.mensagens = []; 
@@ -61,5 +62,7 @@ export class ChatScreen {
     }));
     console.log("MENSAGENS", response);
     this.mensagens = response as IMessage[]; // Cast adicionado para garantir o tipo correto
+
+    this.cd.detectChanges();
   }
 }

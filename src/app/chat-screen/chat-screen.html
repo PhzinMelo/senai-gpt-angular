@@ -5,38 +5,41 @@
             <button class="new-chat-btn">+New Chat</button>
 
             @for (chat of chats; track $index){
-                <button class="botao2" (click)="onChatClick(chat)" cursor:pointer>
-                    <i class="fa-solid fa-message"></i>
-                    {{ chat.chatTitle }}
-                </button>
+            <button class="botao2" (click)="onChatClick(chat)" cursor:pointer>
+                <i class="fa-solid fa-message"></i>
+                {{ chat.chatTitle }}
+            </button>
             }
 
-            
+
 
         </div>
 
 
-            <div class="bottom">
-                <button class="bottom-debaixo">
-                    <i class="fa-solid fa-trash-can"></i>
-                    Clear conversations</button>
-                <button class="bottom-debaixo2">
-                    <i class="fa-solid fa-moon"></i>
-                    Dark Mode</button>
-                <button class="bottom-debaixo2">
-                    <i class="fa-solid fa-user"></i>
-                    My account</button>
-                <button class="bottom-debaixo2">
-                    <i class="fa-solid fa-share-from-square"></i>
-                    Updates &FAQ</button>
-                <button class="bottom-debaixo2">
-                    <i class="fa-solid fa-right-from-bracket"></i>
-                    Log Out</button>
-            </div>
+        <div class="bottom">
+            <button class="bottom-debaixo">
+                <i class="fa-solid fa-trash-can"></i>
+                Clear conversations</button>
+            <button class="bottom-debaixo2">
+                <i class="fa-solid fa-moon"></i>
+                Dark Mode</button>
+            <button class="bottom-debaixo2">
+                <i class="fa-solid fa-user"></i>
+                My account</button>
+            <button class="bottom-debaixo2">
+                <i class="fa-solid fa-share-from-square"></i>
+                Updates &FAQ</button>
+            <button class="bottom-debaixo2">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                Log Out</button>
+        </div>
 
     </aside>
 
     <main class="centralpainel">
+
+        @if (chatSelecionado ==null) {
+
         <div class="logo"></div>
         <div class="boxes-row">
             <div class="box1">
@@ -67,8 +70,24 @@
                 <div class="item-coluna">"May occasionally produce harmful instructions or biased content."</div>
                 <div class="item-coluna">Limited knowledge of world and events after 2021."</div>
             </div>
-
         </div>
+        }
+
+        @if( chatSelecionado !=null){
+        <div class="chat-container">
+            <div class="chat-header">
+                <h2>{{ chatSelecionado.chatTitle}}</h2>
+            </div>
+
+
+            <div class="chat-messages">
+                @for(msg of mensagens; track $index) {
+                <p class="message-item" [class.chatbot]="msg.userId == 'chatbot'">{{ msg.text}}</p>
+                }
+            </div>
+        </div>
+        }
+
         <div class="form-area">
             <form class="chat-input-area">
                 <i class="fa-solid fa-microphone"></i>
