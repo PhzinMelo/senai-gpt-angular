@@ -92,10 +92,10 @@
             <form class="chat-input-area">
                 <i class="fa-solid fa-microphone"></i>
                 <i class="fa-solid fa-image"></i>
-                <input type="text" class="chat-input" placeholder="Type message">
+                <input [formControl]="mensagemUsuario" type="text" class="chat-input" placeholder="Type message">
 
                 <button type="submit" class="chat-send-btn">
-                    <i class="fa-regular fa-paper-plane"></i>
+                    <i class="fa-regular fa-paper-plane" (click)="enviarMensagem()"></i>
                 </button>
             </form>
         </div>

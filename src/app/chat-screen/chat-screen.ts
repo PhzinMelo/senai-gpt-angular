@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { firstValueFrom } from 'rxjs';
 import { ChangeDetectorRef } from '@angular/core';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
 
 interface IChat {
   chatTitle: string;
@@ -19,7 +20,7 @@ interface IMessage {
 
 @Component({
   selector: 'app-chat-screen',
-  imports: [CommonModule],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './chat-screen.html',
   styleUrl: './chat-screen.css'
 })
@@ -27,6 +28,7 @@ export class ChatScreen {
   chats: IChat[];
   chatSelecionado: IChat;
   mensagens: IMessage[]; 
+  mensagemUsuario= new FormControl("")
 
   constructor(private http: HttpClient , private cd: ChangeDetectorRef) {
     this.chats = [];
@@ -64,5 +66,12 @@ export class ChatScreen {
     this.mensagens = response as IMessage[]; // Cast adicionado para garantir o tipo correto
 
     this.cd.detectChanges();
+  }
+  async enviarMensagem () {  
+    let novaMensagemUsuario ={  
+      chatId: this.chatSelecionado ,
+      userId: localStorage.getItem("meuId"),
+      text: this.mensagemUsuario.value
+    }
   }
 }
