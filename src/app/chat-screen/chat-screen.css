@@ -208,6 +208,13 @@ padding-bottom: 24px;
     font-size: 1rem;
     padding: 8px;
     outline: none;
+    border: none;
+  background: transparent;
+  
+    
+   white-space: pre-wrap; /* preserva quebras e espaços */
+  resize: vertical; /* permite redimensionar o campo */
+  width: 100%;
 }
 
 .chat-send-btn {
