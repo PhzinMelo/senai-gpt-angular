@@ -60,19 +60,19 @@ padding-bottom: 24px;
 
 }
 .logo{ 
-    margin-top: 30px;
+    
     width: 40%;
     height: 20%;
     background-image: url("/imgs/Chat.svg");
     background-size: contain;
     background-repeat: no-repeat;
-    margin-top: 10vh;
+    margin-top: -80px;
 }
 .boxes-row{ 
     display: flex;
     flex-direction: row;
     gap: 15px;
-    margin-top: 15px;
+    margin-top: 0px;
    
 }
 .top{   
@@ -83,6 +83,7 @@ padding-bottom: 24px;
     justify-content: center; 
     flex-direction: column;
     align-items:flex-start ;
+    overflow: auto;
     
 
 }

@@ -1,8 +1,7 @@
 <div class="container">
     <aside class="menu">
         <div class="top">
-
-            <button class="new-chat-btn">+New Chat</button>
+            <button class="new-chat-btn" (click)="novoChat()">+New Chat</button>
 
             @for (chat of chats; track $index){
             <button class="botao2" (click)="onChatClick(chat)" cursor:pointer>
@@ -10,36 +9,34 @@
                 {{ chat.chatTitle }}
             </button>
             }
-
-
-
         </div>
-
 
         <div class="bottom">
             <button class="bottom-debaixo">
                 <i class="fa-solid fa-trash-can"></i>
-                Clear conversations</button>
+                Clear conversations
+            </button>
             <button class="bottom-debaixo2">
                 <i class="fa-solid fa-moon"></i>
-                Dark Mode</button>
+                Dark Mode
+            </button>
             <button class="bottom-debaixo2">
                 <i class="fa-solid fa-user"></i>
-                My account</button>
+                My account
+            </button>
             <button class="bottom-debaixo2">
                 <i class="fa-solid fa-share-from-square"></i>
-                Updates &FAQ</button>
-            <button class="bottom-debaixo2">
+                Updates & FAQ
+            </button>
+            <button class="bottom-debaixo2" (click)="logout()">
                 <i class="fa-solid fa-right-from-bracket"></i>
-                Log Out</button>
+                Log Out
+            </button>
         </div>
-
     </aside>
 
     <main class="centralpainel">
-
-        @if (chatSelecionado ==null) {
-
+        @if (chatSelecionado == null) {
         <div class="logo"></div>
         <div class="boxes-row">
             <div class="box1">
@@ -50,54 +47,53 @@
                 <div class="item-coluna">"How do I make an HTTP request in Javascript"</div>
             </div>
             <div class="box2">
-                <img src="imgs/IconSet1.svg" alt="Icone Caoabilities" class="icone-coluna">
+                <img src="imgs/IconSet1.svg" alt="Ícone Capabilities" class="icone-coluna">
                 <h2 class="titulo-meio">Capabilities</h2>
                 <div class="item-coluna">"Remembers what user said earlier in the conversation."</div>
                 <div class="item-coluna">"Allows user to provide follow-up corrections."</div>
                 <div class="item-coluna">"Trained to decline inappropriate requests."</div>
             </div>
             <div class="box3">
-
-
                 <h2 class="titulo-meio2">
                     <i class="fa-solid fa-shield"></i>
-
                 </h2>
-                <h2 class="titulo-meio"> Limitations </h2>
-
-
+                <h2 class="titulo-meio">Limitations</h2>
                 <div class="item-coluna">"May occasionally generate incorrect information."</div>
                 <div class="item-coluna">"May occasionally produce harmful instructions or biased content."</div>
-                <div class="item-coluna">Limited knowledge of world and events after 2021."</div>
+                <div class="item-coluna">"Limited knowledge of world and events after 2021."</div>
             </div>
         </div>
         }
 
-        @if( chatSelecionado !=null){
+        @if (chatSelecionado != null) {
         <div class="chat-container">
             <div class="chat-header">
-                <h2>{{ chatSelecionado.chatTitle}}</h2>
+                <h2>{{ chatSelecionado.chatTitle }}</h2>
             </div>
 
-
             <div class="chat-messages">
-                @for(msg of mensagens; track $index) {
-                <p class="message-item" [class.chatbot]="msg.userId == 'chatbot'">{{ msg.text}}</p>
+                @for (msg of mensagens; track $index) {
+                <p class="message-item" [class.chatbot]="msg.userId == 'chatbot'">{{ msg.text }}</p>
                 }
             </div>
         </div>
-        }
 
         <div class="form-area">
             <div class="chat-input-area">
                 <i class="fa-solid fa-microphone"></i>
                 <i class="fa-solid fa-image"></i>
-                <input [formControl]="mensagemUsuario" type="text" class="chat-input" placeholder="Type message">
 
-                <button type="submit" class="chat-send-btn" (click)="enviarMensagem()">
-                    <i class="fa-regular fa-paper-plane" ></i>
+
+                <input [formControl]="mensagemUsuario" type="text" class="chat-input" placeholder="Type message"
+                    (keydown.enter)="enviarMensagem()">
+
+                <button type="button" class="chat-send-btn" (click)="enviarMensagem()">
+                    <i class="fa-regular fa-paper-plane"></i>
                 </button>
             </div>
         </div>
+        }
+
+
     </main>
 </div>
