@@ -40,6 +40,8 @@ export class ChatScreen {
   // Controle do campo de texto onde o usuário digita a mensagem
   mensagemUsuario = new FormControl("");
 
+  darkMode:boolean=false
+
   constructor(
     private http: HttpClient,
     private cd: ChangeDetectorRef
@@ -48,6 +50,12 @@ export class ChatScreen {
   // Executado automaticamente quando o componente é carregado
   ngOnInit() {
     this.getChats(); // Carrega a lista de chats do usuário
+
+    let darkModeLocalStorage=localStorage.getItem("darkMode")
+    if (darkModeLocalStorage == "true"){  
+      this.darkMode=true
+      document.body.classList.toggle("dark-mode", this.darkMode)
+    }
   }
 
   // Busca os chats da API
@@ -232,5 +240,10 @@ export class ChatScreen {
       console.error("Erro ao criar novo chat:", error);
       alert("Não foi possível criar o novo chat.");
     }
+  }
+  ligarDesligarDarkMode() { 
+    this.darkMode=!this.darkMode
+    document.body.classList.toggle("dark-mode", this.darkMode)
+    localStorage.setItem("darkMode", this.darkMode.toString())
   }
 }

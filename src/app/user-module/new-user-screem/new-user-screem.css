@@ -66,3 +66,21 @@ cursor: pointer;
     border: none;
     cursor: pointer;
 }
+@media screen and (max-width:768px) { 
+  .robo-image { 
+    display: none;
+  }
+  .login-container {  
+    width: 100vw;
+  }
+}
+
+@media screen and (max-width:1366px) { 
+  /* estilos aqui */
+}
+
+@media screen and (max-width:1000px) {  
+  .robo-image{  
+    background-position: center;
+  }
+}

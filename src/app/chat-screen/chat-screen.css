@@ -296,7 +296,7 @@ padding-bottom: 24px;
 
 .chat-container .message-item {
 
-  background-color: #ccc;
+  background-color: #353434;
   border-radius: 12px 12px 0 12px;
   padding: 20px;
   width: 300px;
@@ -307,7 +307,7 @@ padding-bottom: 24px;
 
 .chat-container .message-item.chatbot {
 
-  background-color: #ccc;
+  background-color: #353434;
   border-radius: 12px 12px 12px 0px;
   padding: 20px;
   width: 300px;
@@ -315,4 +315,74 @@ padding-bottom: 24px;
   color: white;
   background: #000;
 
+}
+::ng-deep body.dark-mode .top { 
+  background-color: #000000;
+  color: #e0e0e0;
+}
+
+::ng-deep body.dark-mode {
+    background-color: #000000;
+    color: #e0e0e0;
+}
+
+::ng-deep body.dark-mode .menu {
+    background-color: #000000;
+}
+
+::ng-deep body.dark-mode .menu button {
+    background-color: #353434;
+    color: #e0e0e0;
+}
+
+::ng-deep body.dark-mode .menu button:hover {
+    background-color: #444444;
+}
+
+::ng-deep body.dark-mode .centralpainel {
+    background-color: #000000;
+    color: #e0e0e0;
+}
+
+::ng-deep body.dark-mode .box1,
+::ng-deep body.dark-mode .box2,
+::ng-deep body.dark-mode .box3 {
+    background-color: #1d1d1d;
+    color: #e0e0e0;
+}
+
+::ng-deep body.dark-mode .chat-messages .message-item {
+    background-color:  #242424;
+    color: #e0e0e0;
+}
+
+::ng-deep body.dark-mode .chat-messages .message-item.chatbot {
+    background-color:  #353434;
+    color: #e0e0e0 ;
+}
+
+::ng-deep body.dark-mode .chat-input-area {
+    border-top: 1px solid #e0e0e0;
+}
+
+::ng-deep body.dark-mode .chat-input {
+    background-color: #e0e0e0;
+    color: rgba(0,0,0,0.03);
+    border: 1px solid #555;
+    outline: none;
+    border: none;
+  background: transparent;
+}
+
+::ng-deep body.dark-mode .chat-send-btn {
+    background-color: #555555;
+    color: #fff;
+}
+::ng-deep body.dark-mode .item-coluna{  
+    background-color:  #2e2e2e;
+    color: #e0e0e0;
+}
+::ng-deep body.dark-mode .bottom{   
+    background-color: #000 ;
+    color: white;
 }
