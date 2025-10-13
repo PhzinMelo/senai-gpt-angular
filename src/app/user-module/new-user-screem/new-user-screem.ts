@@ -100,7 +100,7 @@ export class NewUserScreen {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        nome: nome,
+        name: nome,
         email: email,
         password: password
       })

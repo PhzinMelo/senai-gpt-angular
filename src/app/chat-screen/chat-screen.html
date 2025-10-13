@@ -12,22 +12,15 @@
         </div>
 
         <div class="bottom">
-            <button class="bottom-debaixo">
+            <button class="bottom-debaixo" (click)="deletarChat()">
                 <i class="fa-solid fa-trash-can"></i>
                 Clear conversations
             </button>
-            <button class="bottom-debaixo2" (click)=" ligarDesligarDarkMode()">
+            <button class="bottom-debaixo2" (click)="ligarDesligarDarkMode()">
                 <i class="fa-solid fa-moon"></i>
                 Dark Mode
             </button>
-            <button class="bottom-debaixo2">
-                <i class="fa-solid fa-user"></i>
-                My account
-            </button>
-            <button class="bottom-debaixo2">
-                <i class="fa-solid fa-share-from-square"></i>
-                Updates & FAQ
-            </button>
+            
             <button class="bottom-debaixo2" (click)="logout()">
                 <i class="fa-solid fa-right-from-bracket"></i>
                 Log Out
@@ -40,14 +33,14 @@
         <div class="logo"></div>
         <div class="boxes-row">
             <div class="box1">
-                <img src="imgs/IconSet.svg" alt="Ícone Examples" class="icone-coluna">
+                <div class="icone-coluna icone-example"></div>
                 <h2 class="titulo-meio">Example</h2>
                 <div class="item-coluna">"Explain quantum computing in simple terms"</div>
                 <div class="item-coluna">"Got any creative ideas for a 10 year old's birthday?"</div>
                 <div class="item-coluna">"How do I make an HTTP request in Javascript"</div>
             </div>
             <div class="box2">
-                <img src="imgs/IconSet1.svg" alt="Ícone Capabilities" class="icone-coluna">
+                <div class="icone-coluna icone-capabilities"></div>
                 <h2 class="titulo-meio">Capabilities</h2>
                 <div class="item-coluna">"Remembers what user said earlier in the conversation."</div>
                 <div class="item-coluna">"Allows user to provide follow-up corrections."</div>
@@ -83,7 +76,6 @@
                 <i class="fa-solid fa-microphone"></i>
                 <i class="fa-solid fa-image"></i>
 
-
                 <input [formControl]="mensagemUsuario" type="text" class="chat-input" placeholder="Type message"
                     (keydown.enter)="enviarMensagem()">
 
@@ -93,7 +85,5 @@
             </div>
         </div>
         }
-
-
     </main>
 </div>

@@ -316,73 +316,226 @@ padding-bottom: 24px;
   background: #000;
 
 }
-::ng-deep body.dark-mode .top { 
-  background-color: #000000;
-  color: #e0e0e0;
-}
-
 ::ng-deep body.dark-mode {
-    background-color: #000000;
-    color: #e0e0e0;
+  background-color: #111214 !important;
+  color: #e2e2e2 !important;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-family: system-ui, sans-serif;
 }
 
+/* ---------- MENU LATERAL ---------- */
 ::ng-deep body.dark-mode .menu {
-    background-color: #000000;
+  background-color: #1a1b1e !important;
+  color: #e2e2e2 !important;
+  border-right: 1px solid #242427;
+  box-shadow: inset -2px 0 8px rgba(0, 0, 0, 0.3);
 }
 
-::ng-deep body.dark-mode .menu button {
-    background-color: #353434;
-    color: #e0e0e0;
+::ng-deep body.dark-mode .new-chat-btn {
+  background: linear-gradient(145deg, #252528, #1c1c1f);
+  color: #f2f2f2;
+  border: none;
+  border-radius: 10px;
+  padding: 12px;
+  width: 90%;
+  margin: 12px auto;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.25s ease;
+}
+::ng-deep body.dark-mode .new-chat-btn:hover {
+  background: linear-gradient(145deg, #2c2c2f, #222225);
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.06);
 }
 
-::ng-deep body.dark-mode .menu button:hover {
-    background-color: #444444;
+/* ---------- BOTÕES DE CHAT ---------- */
+::ng-deep body.dark-mode .botao2 {
+  background-color: #202124;
+  color: #d6d6d6;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin: 6px 0;
+  text-align: left;
+  width: 100%;
+  transition: all 0.25s ease;
+}
+::ng-deep body.dark-mode .botao2:hover {
+  background-color: #2b2c30;
+  color: #ffffff;
 }
 
-::ng-deep body.dark-mode .centralpainel {
-    background-color: #000000;
-    color: #e0e0e0;
+/* ---------- RODAPÉ DO MENU ---------- */
+::ng-deep body.dark-mode .bottom,
+::ng-deep body.dark-mode .top {
+  background: transparent !important;
 }
 
-::ng-deep body.dark-mode .box1,
-::ng-deep body.dark-mode .box2,
-::ng-deep body.dark-mode .box3 {
-    background-color: #1d1d1d;
-    color: #e0e0e0;
-}
-
-::ng-deep body.dark-mode .chat-messages .message-item {
-    background-color:  #242424;
-    color: #e0e0e0;
-}
-
-::ng-deep body.dark-mode .chat-messages .message-item.chatbot {
-    background-color:  #353434;
-    color: #e0e0e0 ;
-}
-
-::ng-deep body.dark-mode .chat-input-area {
-    border-top: 1px solid #e0e0e0;
-}
-
-::ng-deep body.dark-mode .chat-input {
-    background-color: #e0e0e0;
-    color: rgba(0,0,0,0.03);
-    border: 1px solid #555;
-    outline: none;
-    border: none;
+::ng-deep body.dark-mode .bottom-debaixo,
+::ng-deep body.dark-mode .bottom-debaixo2 {
   background: transparent;
+  color: #bcbcbc;
+  border: none;
+  width: 100%;
+  text-align: left;
+  padding: 8px 14px;
+  border-radius: 8px;
+  transition: all 0.25s ease;
+}
+::ng-deep body.dark-mode .bottom-debaixo:hover,
+::ng-deep body.dark-mode .bottom-debaixo2:hover {
+  background-color: #26272a;
+  color: #fff;
 }
 
+/* ---------- PAINEL CENTRAL ---------- */
+::ng-deep body.dark-mode .centralpainel {
+  background-color: #131315;
+  color: #e2e2e2;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ---------- BOXES (Example / Capabilities / Limitations) ---------- */
+::ng-deep body.dark-mode .boxes-row .box1,
+::ng-deep body.dark-mode .boxes-row .box2,
+::ng-deep body.dark-mode .boxes-row .box3 {
+  background-color: #1c1d20;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(255, 255, 255, 0.03);
+  transition: all 0.3s ease;
+}
+::ng-deep body.dark-mode .boxes-row .box1:hover,
+::ng-deep body.dark-mode .boxes-row .box2:hover,
+::ng-deep body.dark-mode .boxes-row .box3:hover {
+  background-color: #242528;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.05);
+}
+::ng-deep body.dark-mode .item-coluna {
+  background: #2a2b2f;
+  color: #d8d8d8;
+  border-radius: 8px;
+  box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.2);
+}
+
+/* ---------- ÁREA DO CHAT ---------- */
+::ng-deep body.dark-mode .chat-container {
+  background-color: #151517;
+  border-radius: 10px;
+  box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.03);
+}
+
+::ng-deep body.dark-mode .chat-header {
+  background-color: #1c1c1f;
+  border-bottom: 1px solid #2d2d30;
+  color: #f0f0f0;
+  border-radius: 10px 10px 0 0;
+  padding: 12px 18px;
+}
+
+/* ---------- MENSAGENS ---------- */
+::ng-deep body.dark-mode .message-item {
+  background-color: #212124;
+  color: #e0e0e0;
+  border-radius: 12px;
+  padding: 10px 14px;
+  margin-bottom: 10px;
+  max-width: 85%;
+  line-height: 1.5;
+  transition: all 0.2s ease;
+}
+::ng-deep body.dark-mode .message-item.chatbot {
+  background-color: #29292c;
+  color: #f5f5f5;
+}
+
+/* ---------- INPUT DE MENSAGEM ---------- */
+::ng-deep body.dark-mode .chat-input-area {
+  background-color: #1d1d20;
+  border-radius: 14px;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.03);
+}
+::ng-deep body.dark-mode .chat-input {
+  background: transparent;
+  color: #f5f5f5;
+  border: none;
+  outline: none;
+  flex: 1;
+}
 ::ng-deep body.dark-mode .chat-send-btn {
-    background-color: #555555;
-    color: #fff;
+  background: linear-gradient(145deg, #2a2a2d, #1f1f21);
+  border: none;
+  color: #f0f0f0;
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s ease;
 }
-::ng-deep body.dark-mode .item-coluna{  
-    background-color:  #2e2e2e;
-    color: #e0e0e0;
+::ng-deep body.dark-mode .chat-send-btn:hover {
+  background: linear-gradient(145deg, #343437, #262629);
 }
-::ng-deep body.dark-mode .bottom{   
-    background-color: #000 ;
-    color: white;
+
+/* ---------- SCROLLBAR ---------- */
+::ng-deep body.dark-mode ::-webkit-scrollbar {
+  width: 8px;
+}
+::ng-deep body.dark-mode ::-webkit-scrollbar-thumb {
+  background-color: #2f2f33;
+  border-radius: 8px;
+}
+::ng-deep body.dark-mode ::-webkit-scrollbar-thumb:hover {
+  background-color: #3a3a3e;
+}
+
+/* ---------- ÍCONES ---------- */
+::ng-deep body.dark-mode i {
+  color: #cfcfcf;
+  transition: color 0.2s ease;
+}
+::ng-deep body.dark-mode i:hover {
+  color: #ffffff;
+}
+
+/* ---------- LOGO / ÍCONES DE CAIXA ---------- */
+::ng-deep body.dark-mode .logo,
+::ng-deep body.dark-mode .icone-coluna {
+  filter: brightness(0.9);
+}
+::ng-deep body.dark-mode .logo{ 
+    width: 40%;
+    height: 20%;
+    background-image: url("/imgs/3.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-top: -80px;
+}
+.icone-coluna.icone-example {   
+    background-image: url("/imgs/IconSet.svg");
+    width: 15%;
+    height: 15%;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.icone-coluna.icone-capabilities {   
+    background-image: url("/imgs/IconSet1.svg");
+    width: 15%;
+    height: 15%;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+/* Dark mode */
+::ng-deep body.dark-mode .icone-coluna.icone-example {   
+    background-image: url("/imgs/w-icon.svg");
+}
+
+::ng-deep body.dark-mode .icone-coluna.icone-capabilities {   
+    background-image: url("/imgs/w-icon2.svg");
 }
