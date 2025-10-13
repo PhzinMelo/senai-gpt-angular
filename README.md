@@ -1,59 +1,92 @@
-# SenaiGptWebAngular
+# Senai GPT Web (Angular)
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.2.1.
+Aplicação web em Angular para autenticação de usuários e chat com IA, consumindo uma API hospedada no Azure. Inclui tela de login e cadastro, listagem de chats, troca de mensagens e modo escuro. Projeto publicado na Vercel.
 
-## Development server
+## Link do Projeto
 
-To start a local development server, run:
+- Acesse: https://senai-gpt-angular.vercel.app/login
 
-```bash
-ng serve
+### Usuário para teste
+
+   - e-mail: front@email.com
+   - senha: frontdomina
+
+## Demonstração
+
+<img height="939" alt="image" src="https://github.com/user-attachments/assets/734545ca-b16e-4e97-9946-5f0b323d5bfa" />
+
+## Tecnologias
+
+- Angular 20 (standalone components)
+- TypeScript 5.8
+- Angular Router (rotas e `CanActivate` guard)
+- Reactive Forms (login e cadastro)
+- HttpClient + Interceptor (tratamento de 401)
+- Deploy: Vercel (frontend) | Backend: Azure App Service
+
+## Funcionalidades
+
+- Autenticação com armazenamento de token em `localStorage` (`meuToken`, `meuId`).
+- Proteção de rota `/chat` via guard (`src/app/auth.guard.ts`).
+- Chat com listagem de conversas e mensagens persistidas pela API.
+- Chamadas ao endpoint `/chat-completion` para obter resposta da IA (modelo Gemini via backend).
+- Modo escuro e persistência de preferências no `localStorage`.
+
+## Endpoints Consumidos (Backend)
+
+Base URL: `https://senai-gpt-api.azurewebsites.net`
+
+- `POST /login` – autenticação
+- `POST /users` – cadastro de usuário
+- `GET /chats`, `POST /chats`, `DELETE /chats/:id`
+- `GET /messages?chatId=...`, `POST /messages`, `DELETE /messages/:id`
+- `POST /chat-completion` – resposta da IA
+
+## Requisitos
+
+- Node.js 18.19+ (ou 20.x recomendado)
+- npm 9+
+
+## Como Rodar Localmente
+
+1) Instale as dependências:
 ```
-
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
+npm install
 ```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
+2) Inicie o servidor de desenvolvimento:
 ```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
+npm run start
 ```
+3) Acesse `http://localhost:4200/`.
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Dicas:
+- Crie um usuário em `/new-user` e faça login em `/login` para acessar `/chat`.
+- O token é salvo automaticamente no `localStorage` após login.
 
-## Running unit tests
+## Build
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
 ```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
+npm run build
 ```
+Os artefatos serão gerados em `dist/` conforme `angular.json`.
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## Scripts Disponíveis
 
-## Additional Resources
+- `npm start` – `ng serve` (dev)
+- `npm run build` – build de produção
+- `npm run watch` – build em modo watch (dev)
+- `npm test` – testes unitários (Karma + Jasmine)
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## Estrutura (Resumo)
+
+- `src/app/app.routes.ts` – definição das rotas
+- `src/app/auth.guard.ts` – guard de autenticação
+- `src/app/user-module/login-screen/` – tela de login
+- `src/app/user-module/new-user-screen/` – tela de cadastro
+- `src/app/chat-module/chat-screen/` – tela do chat e `chat-service.ts`
+- `src/app/interfaces/gemini-response.ts` – tipos da resposta da IA
+
+## Observações
+
+- A URL da API está fixa no frontend em `chat-service.ts` e no login (fetch). Ajuste para ambientes diferentes se necessário.
+- O interceptor redireciona para `/login` em respostas `401` e limpa o `localStorage`.
