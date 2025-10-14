@@ -4,7 +4,7 @@ Aplicação web em Angular para autenticação de usuários e chat com IA, consu
 
 ## Link do Projeto
 
-- Acesse: https://senai-gpt-angular.vercel.app/login
+- Acesse: https://senai-gpt-angular-g11gv28gj-phzinmelos-projects.vercel.app/login
 
 ### Usuário para teste
 
