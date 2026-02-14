@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-screen',
@@ -14,10 +15,8 @@ export class LoginScreen {
   sucessLogin: string
   errorLogin: string
   
-  constructor(private fb:FormBuilder, ) {  
-    //inicia o formulario
-    //Cria o campo obrigatorio de email.
-    //Cria o campo obrigatorio da senha.
+  constructor(private fb:FormBuilder,private router: Router) {  
+    
     this.loginForm=this.fb.group({
       email: ["",[Validators.required]],
       password: ["",[Validators.required]]
@@ -33,20 +32,21 @@ export class LoginScreen {
     this.passwordErrorMessage="";
     this.sucessLogin="";
     this.errorLogin="";
-    //alert("Botão de login clicado")
+    
     console.log("Email",this.loginForm.value.email)
     console.log("Password",this.loginForm.value.password)
     
     if(this.loginForm.value.email ==""){  
-      // alert("Preencha o email")
+      
       this.emailErrorMessage="O campo de e-mail é obrigatorio"
       return; }
 
     if (this.loginForm.value.password =="") {
-      //alert("Preencha a senha")
+      
       this.passwordErrorMessage="O campo de senha é obrigatorio"
       return;
     }
+    
     
     let response =await fetch("https://senai-gpt-api.azurewebsites.net/login", {  
       method: "Post",
@@ -85,5 +85,8 @@ export class LoginScreen {
     else if(password2.lenght ===0){
       alert(`Campo de senha obrigatorio`)}
       }
-      
+    
+     goToNewUser() {
+  this.router.navigate(['/new-user']);
+} 
 }
