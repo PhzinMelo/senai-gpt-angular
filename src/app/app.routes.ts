@@ -5,6 +5,11 @@ import { authGuard} from './auth.guard';
 import { NewUserScreen } from './user-module/new-user-screem/new-user-screem';
 
 export const routes: Routes = [
+    { 
+        path: '', 
+        redirectTo: 'login', 
+        pathMatch: 'full' 
+    },
     {   
         path: "login",
         loadComponent:  () => LoginScreen
