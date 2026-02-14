@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -16,7 +17,7 @@ export class NewUserScreen {
   sucessLogin: string;
   errorLogin: string;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder,private router: Router) {
     this.loginForm = this.fb.group({
       nome: ["", [Validators.required,]],
       email: ["", [Validators.required,
@@ -118,5 +119,8 @@ export class NewUserScreen {
       this.errorLogin = "Erro ao criar usuário. Tente novamente.";
       this.sucessLogin = "";
     }
+  }
+  goToLogin(){  
+   this.router.navigate(['/login']); 
   }
 }

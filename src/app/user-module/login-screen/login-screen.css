@@ -1,103 +1,312 @@
-
-*{  
- padding:0px ;
- margin: 0px;
- box-sizing: border-box;
- font-family: "inter";   
+/* ========================================
+   RESET & BASE STYLES - LOGIN
+   ======================================== */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
+body {
+  overflow: hidden;
+}
+
+/* ========================================
+   PAGE CONTAINER
+   ======================================== */
+.page-container {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* ========================================
+   ROBOT IMAGE SECTION
+   ======================================== */
+.robo-image {
+  background-image: url(../../../../public/imgs/Rectangle\ 1.png);
+  background-size: cover;
+  background-position: 0px -100px;
+  width: 50vw;
+  height: 100vh;
+  position: relative;
+}
+
+/* Overlay sutil para melhor contraste */
+.robo-image::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.05) 100%);
+  pointer-events: none;
+}
+
+/* ========================================
+   LOGIN CONTAINER
+   ======================================== */
+.login-container {
+  background-color: #ffffff;
+  width: 50vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  position: relative;
+}
+
+/* ========================================
+   LOGO
+   ======================================== */
+.logo {
+  height: 70px;
+  margin-bottom: 16px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.06));
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+/* ========================================
+   TITLE
+   ======================================== */
 .titulo {
-
-  font-size: 76px; /* Ajuste o tamanho conforme necessário */
-  font-family: "inter";
-  text-align: center; /* Alinha o título no centro */
+  font-size: 64px;
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  text-align: center;
   margin-top: 0;
-  margin-bottom: 16px; /* Dá um espaçamento abaixo do título */
-  width: 400px;
-  
+  margin-bottom: 24px;
+  width: 100%;
+  max-width: 400px;
+  color: #1a1a1a;
+  letter-spacing: -1px;
 }
 
-.robo-image{    
-
-    background-image: url(../../../../public/imgs/Rectangle\ 1.png);
-    background-size: cover;
-    background-position:0px -100px ;
-    width: 50vw;
-    height: 100vh;
+/* ========================================
+   INPUT FIELDS
+   ======================================== */
+.inpute {
+  padding: 18px 20px;
+  background-color: #f7f9fb;
+  width: 100%;
+  max-width: 377px;
+  border: 1.5px solid #e1e4e8;
+  border-radius: 12px;
+  margin-bottom: 6px;
+  font-size: 15px;
+  color: #1a1a1a;
+  transition: all 0.3s ease;
+  outline: none;
+  font-family: "Inter", sans-serif;
 }
 
-.page-container{    
-
-    display:flex;
-
-
-}
-.login-container{   
-      background-color: rgb(255, 255, 255);
-      width:50vw;
-      height:100vh ;
-
-      /* Kit centralizaçãoverflow */
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-.logo{   
-    height: 60px; 
-    margin-bottom: 8px; 
-
+.inpute::placeholder {
+  color: #8a8f98;
+  font-weight: 400;
 }
 
-.inpute{ 
- padding: 20px; /*margem interna*/
- background-color:#F7F9FB;
- width: 377px;
- border: 1px solid #ccc;
- border-radius: 10px;
- margin-bottom: 16px;
-}
-.error-mesage{  
-    color: red;
-    font-size: 12px;    
-    transform: translateY(-12px);
-}
-.aprove-mesage{ 
-  color: green;
-    font-size: 12px;    
-    transform: translateY(-12px);  
-}
-.butone{    
- padding: 20px; /*margem interna*/
- background-color:#F7F9FB;
- width: 377px;
- border: 1px solid #ccc;
- border-radius: 10px;
- margin-bottom: 16px;
-background-color: #1c1c1c;
-color: #ccc;
+.inpute:focus {
+  background-color: #ffffff;
+  border-color: #2d3748;
+  box-shadow: 0 0 0 3px rgba(45, 55, 72, 0.1);
+  transform: translateY(-1px);
 }
 
-/* Media Query */
-@media screen and (max-width:768px) { 
-  .robo-image { 
+.inpute:hover:not(:focus) {
+  border-color: #c5cad1;
+}
+
+/* ========================================
+   ERROR & SUCCESS MESSAGES
+   ======================================== */
+.error-mesage {
+  color: #e53e3e;
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 10px;
+  width: 100%;
+  max-width: 377px;
+  text-align: left;
+  padding-left: 4px;
+  min-height: 18px;
+  display: block;
+}
+
+.aprove-mesage {
+  color: #38a169;
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 10px;
+  width: 100%;
+  max-width: 377px;
+  text-align: left;
+  padding-left: 4px;
+  min-height: 18px;
+  display: block;
+}
+
+/* ========================================
+   BUTTONS
+   ======================================== */
+.butone {
+  padding: 18px 20px;
+  background-color: #1c1c1c;
+  width: 100%;
+  max-width: 377px;
+  border: none;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: "Inter", sans-serif;
+  box-shadow: 0 2px 8px rgba(28, 28, 28, 0.15);
+}
+
+.butone:hover {
+  background-color: #2d2d2d;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(28, 28, 28, 0.25);
+}
+
+.butone:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(28, 28, 28, 0.2);
+}
+
+.butone:last-of-type {
+  background-color: transparent;
+  color: #1c1c1c;
+  border: 1.5px solid #e1e4e8;
+  box-shadow: none;
+  font-weight: 500;
+}
+
+.butone:last-of-type:hover {
+  background-color: #f7f9fb;
+  border-color: #c5cad1;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+/* ========================================
+   FOOTER
+   ======================================== */
+footer {
+  display: none;
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+
+/* Tablets e dispositivos menores */
+@media screen and (max-width: 1024px) {
+  .titulo {
+    font-size: 56px;
+  }
+
+  .robo-image {
+    background-position: center -50px;
+  }
+
+  .inpute,
+  .butone {
+    max-width: 340px;
+  }
+}
+
+/* Mobile landscape e tablets pequenos */
+@media screen and (max-width: 768px) {
+  .robo-image {
     display: none;
   }
-  .login-container {  
+
+  .login-container {
     width: 100vw;
+  }
+
+  .titulo {
+    font-size: 48px;
+    margin-bottom: 24px;
+  }
+
+  .logo {
+    height: 60px;
+    margin-bottom: 20px;
+  }
+
+  .inpute,
+  .butone {
+    max-width: 90vw;
+    width: 90vw;
   }
 }
 
-@media screen and (max-width:1366px) { 
-  /* estilos aqui */
+/* Mobile portrait */
+@media screen and (max-width: 480px) {
+  .login-container {
+    padding: 24px 20px;
+  }
+
+  .titulo {
+    font-size: 40px;
+    margin-bottom: 20px;
+  }
+
+  .logo {
+    height: 50px;
+    margin-bottom: 16px;
+  }
+
+  .inpute {
+    padding: 16px 18px;
+    font-size: 14px;
+  }
+
+  .butone {
+    padding: 16px 18px;
+    font-size: 14px;
+  }
+
+  .error-mesage,
+  .aprove-mesage {
+    font-size: 12px;
+  }
 }
 
-@media screen and (max-width:1000px) {  
-  .robo-image{  
+/* Desktop grande */
+@media screen and (min-width: 1440px) {
+  .titulo {
+    font-size: 72px;
+  }
+
+  .logo {
+    height: 80px;
+  }
+
+  .inpute,
+  .butone {
+    max-width: 420px;
+    padding: 20px 22px;
+    font-size: 16px;
+  }
+}
+
+/* Ajuste específico para largura intermediária */
+@media screen and (max-width: 1000px) and (min-width: 769px) {
+  .robo-image {
     background-position: center;
   }
 }
-
-
-
-
