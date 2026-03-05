@@ -119,7 +119,7 @@ export class ChatScreen {
       await this.onChatClick(this.chatSelecionado);
 
       const respostaIAResponse = await firstValueFrom(this.http.post(
-        "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent",
+        "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent",
         {
           contents: [
             {
@@ -132,10 +132,12 @@ export class ChatScreen {
         {
           headers: {
             "content-type": "application/json",
-            "x-goog-api-key": "AIzaSyDV2HECQZLpWJrqCKEbuq7TT5QPKKdLOdo"
+            "x-goog-api-key": "AIzaSyCsSWS3V5u-K_fGegOxJCMUVdEgIvc0Ink"
           }
         }
       )) as any;
+
+      console.log("Resposta completa da IA:", respostaIAResponse);
 
       const novaRespostaIA = {
         chatId: this.chatSelecionado.id,
