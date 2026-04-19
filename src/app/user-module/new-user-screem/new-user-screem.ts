@@ -95,7 +95,7 @@ export class NewUserScreen {
     }
 
     // Envia os dados para a API
-let response = await fetch("http://localhost:3000/auth/register", {
+let response = await fetch("https://backend-senaigpt.onrender.com/auth/register", {
   method: "POST",
   headers: {
     "Content-Type": "application/json"

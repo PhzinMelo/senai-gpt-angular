@@ -37,7 +37,7 @@ export class ChatScreen implements OnInit {
   darkMode: boolean = false;
 
   // [FIX 1] — URL base centralizada; troque pela URL do Render em produção
-  API_URL = "http://localhost:3000";
+  API_URL = "https://backend-senaigpt.onrender.com";
 
   // Cabeçalho JWT reutilizável — evita repetição em cada chamada
   private get authHeaders() {
