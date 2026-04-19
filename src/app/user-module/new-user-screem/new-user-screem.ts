@@ -95,32 +95,37 @@ export class NewUserScreen {
     }
 
     // Envia os dados para a API
-    let response = await fetch("https://senai-gpt-api.azurewebsites.net/users", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        name: nome,
-        email: email,
-        password: password
-      })
-    });
+let response = await fetch("http://localhost:3000/auth/register", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    name: nome,
+    email: email,
+    password: password
+  })
+});
 
-    console.log("Status code: " + response.status);
+const json = await response.json();
 
-    if (response.status >= 200 && response.status <= 299) {
-      this.sucessLogin = "Usuário criado com sucesso!";
-      this.errorLogin = "";
-      let json = await response.json();
-      console.log("Resposta da API:", json);
-      window.location.href = "login";
-    } else {
-      this.errorLogin = "Erro ao criar usuário. Tente novamente.";
-      this.sucessLogin = "";
-    }
+console.log("Resposta da API:", json);
+
+if (response.ok && json.success) {
+  this.sucessLogin = "Usuário criado com sucesso!";
+  this.errorLogin = "";
+
+  // 🔥 opcional: já salvar token
+  if (json.data?.token) {
+    localStorage.setItem("meuToken", json.data.token);
+    localStorage.setItem("meuId", json.data.user._id);
   }
-  goToLogin(){  
-   this.router.navigate(['/login']); 
-  }
-}
+
+  setTimeout(() => {
+    this.router.navigate(['/login']);
+  }, 1000);
+
+} else {
+  this.errorLogin = json.message || "Erro ao criar usuário";
+  this.sucessLogin = "";
+}}}

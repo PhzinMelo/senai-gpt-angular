@@ -11,82 +11,82 @@ import { Router } from '@angular/router';
 export class LoginScreen {
   loginForm: FormGroup;
   emailErrorMessage: string;
-  passwordErrorMessage: string
-  sucessLogin: string
-  errorLogin: string
+  passwordErrorMessage: string;
+  sucessLogin: string;
+  errorLogin: string;
   
-  constructor(private fb:FormBuilder,private router: Router) {  
-    
-    this.loginForm=this.fb.group({
-      email: ["",[Validators.required]],
-      password: ["",[Validators.required]]
+  constructor(private fb: FormBuilder, private router: Router) {  
+    this.loginForm = this.fb.group({
+      email: ["", [Validators.required]],
+      password: ["", [Validators.required]]
     });
-    this.emailErrorMessage= ""
-    this.passwordErrorMessage= ""
-    this.sucessLogin= ""
-    this.errorLogin=""
-  
-  }
-  async onLoginClick(){ 
-    this.emailErrorMessage= "";
-    this.passwordErrorMessage="";
-    this.sucessLogin="";
-    this.errorLogin="";
-    
-    console.log("Email",this.loginForm.value.email)
-    console.log("Password",this.loginForm.value.password)
-    
-    if(this.loginForm.value.email ==""){  
-      
-      this.emailErrorMessage="O campo de e-mail é obrigatorio"
-      return; }
 
-    if (this.loginForm.value.password =="") {
-      
-      this.passwordErrorMessage="O campo de senha é obrigatorio"
+    this.emailErrorMessage = "";
+    this.passwordErrorMessage = "";
+    this.sucessLogin = "";
+    this.errorLogin = "";
+  }
+
+  async onLoginClick(){ 
+    this.emailErrorMessage = "";
+    this.passwordErrorMessage = "";
+    this.sucessLogin = "";
+    this.errorLogin = "";
+
+    const email = this.loginForm.value.email;
+    const password = this.loginForm.value.password;
+
+    if (email === "") {  
+      this.emailErrorMessage = "O campo de e-mail é obrigatório";
       return;
     }
-    
-    
-    let response =await fetch("https://senai-gpt-api.azurewebsites.net/login", {  
-      method: "Post",
-      headers: {  
-        "Content-Type" : "application/json"
-      },body: JSON.stringify({ 
-        email: this.loginForm.value.email,
-        password: this.loginForm.value.password
-      })
-   
-    
-    })
-     
-    console.log("Status code" + response.status);
 
-    if (response.status>=200 && response.status<=299) {  
-      this.sucessLogin="Login feito com sucesso"
-      this.errorLogin=""
-      let json= await response.json();
-      console.log("JSON",json)
-      let meuToken= json.accessToken
-      let userId= json.user.id;
-      localStorage.setItem("meuToken", meuToken)
-      localStorage.setItem("meuId", userId)
-      window.location.href="chat"
+    if (password === "") {
+      this.passwordErrorMessage = "O campo de senha é obrigatório";
+      return;
     }
-    else  {  
-      this.errorLogin="Email ou senha incorretos"
-      this.sucessLogin=""
-    }
-    
-    let email2 =this.loginForm.value.email ;
-    let password2=this.loginForm.value.password ;
-    if (email2.lenght ===0) {
-      alert('Campo de email obrigatorio') }
-    else if(password2.lenght ===0){
-      alert(`Campo de senha obrigatorio`)}
+
+    try {
+      const response = await fetch("http://localhost:3000/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          email: email,
+          password: password
+        })
+      });
+
+      const json = await response.json();
+
+      console.log("Resposta:", json);
+
+      if (response.ok && json.success) {
+        this.sucessLogin = "Login feito com sucesso";
+        this.errorLogin = "";
+
+        const meuToken = json.data.token;
+        const userId = json.data.user._id;
+
+        localStorage.setItem("meuToken", meuToken);
+        localStorage.setItem("meuId", userId);
+
+        this.router.navigate(['/chat']);
+
+      } else {
+        this.errorLogin = json.message || "Email ou senha incorretos";
+        this.sucessLogin = "";
       }
-    
-     goToNewUser() {
-  this.router.navigate(['/new-user']);
-} 
+
+    } catch (error) {
+      console.error("Erro na requisição:", error);
+      this.errorLogin = "Erro ao conectar com o servidor";
+      this.sucessLogin = "";
+    }
+  }
+
+  goToNewUser() {
+    this.router.navigate(['/new-user']);
+  }
 }
